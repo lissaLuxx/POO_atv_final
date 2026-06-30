@@ -32,6 +32,16 @@ public class Motorista implements Serializable {
         this.tem_mopp = tem_mopp;
     } 
 
+    @Override
+    public String toString() {
+        return "Motorista[" +
+                "nome:'" + nome + '\'' +
+                ", cpf:'" + cpf + '\'' +
+                ", carteira:'" + carteira + '\'' +
+                ", mopp: '" + (tem_mopp?"sim":"não") + "'" +
+                ']';
+    }
+
     public Motorista(String nome, String cpf, String carteira, boolean tem_mopp) {
 
         if (cpf.isBlank()) {

@@ -37,4 +37,13 @@ public class CargaPerigosa extends Carga implements Seguravel {
     public double calcularSeguro() {
         return valor * 0.2;
     }
+    @Override
+    public String toString() {
+        return "CargaPerigosa[" +
+                "peso:" + peso +
+                ", valor:" + valor +
+                ", numero ONU:'" + numero_onu + '\'' +
+                ", possui licenca:'" + (tem_licenca?"sim":"não") + '\'' +
+                ']';
+    }
 }

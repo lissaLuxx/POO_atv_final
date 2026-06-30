@@ -14,4 +14,11 @@ public class CargaRegular extends Carga implements Seguravel{
         }
         return 0;
     }
+    @Override
+    public String toString() {
+        return "CargaRegular[" +
+                "peso:" + peso +
+                ", valor:" + valor +
+                ']';
+    }
 }

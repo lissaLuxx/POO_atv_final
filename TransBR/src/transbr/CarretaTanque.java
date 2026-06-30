@@ -24,4 +24,12 @@ public class CarretaTanque extends Veiculos {
         this.inspecao_ativa = inspecao_ativa;
     }
     
+    @Override
+    public String toString() {
+        return "CarretaTanque[" +
+                "placa:'" + placa + '\'' +
+                ", tipo de carteira:'" + tipo_carteira + '\'' +
+                ", status de inspeção:'" + (inspecao_ativa?"sim":"não") + '\'' +
+                ']';
+    }
 }

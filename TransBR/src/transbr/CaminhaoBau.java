@@ -20,7 +20,14 @@ public class CaminhaoBau extends Veiculos{
         super(placa, tipo_carteira);
         this.peso_max = peso_max;
     }
-    
+    @Override
+    public String toString() {
+        return "CaminhaoBau[" +
+                "placa:'" + placa + '\'' +
+                ", tipo de carteira:'" + tipo_carteira + '\'' +
+                ", peso máximo:'" + peso_max + '\'' +
+                ']';
+    }    
 
     
 }

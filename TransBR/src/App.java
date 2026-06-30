@@ -94,12 +94,10 @@ public class App {
             }
         }
 
-        if (motorista_selecionado.getTem_mopp()) {
-            System.out.println("Carretas-tanque disponíveis: ");
-            for (int i = caminhoes.size(); i < carretas.size(); i++) {
-                System.out.println("[" + (i+1) + "] " + carretas.get(i).toString());
-            }    
-        }
+        System.out.println("Carretas-tanque disponíveis: ");
+        for (int i = caminhoes.size(); i < carretas.size(); i++) {
+            System.out.println("[" + (i+1) + "] " + carretas.get(i).toString());
+        }    
         System.out.println("[0] Retornar");
 
         int opt_veiculo = input.nextInt(); input.nextLine();
@@ -121,11 +119,10 @@ public class App {
             System.out.println("[" + (i+1) + "] " + cargas_regulares.get(i).toString());
         }
 
-        if (veiculo_selecionado instanceof CarretaTanque) {
-            System.out.println("Cargas perigosas disponíveis: ");
-            for (int i = cargas_regulares.size(); i < cargas_perigosas.size(); i++) {
-                System.out.println("[" + (i+1) + "] " + cargas_perigosas.get(i).toString());
-            }
+
+        System.out.println("Cargas perigosas disponíveis: ");
+        for (int i = cargas_regulares.size(); i < cargas_perigosas.size(); i++) {
+            System.out.println("[" + (i+1) + "] " + cargas_perigosas.get(i).toString());
         }
 
         System.out.println("[0] Retornar");
@@ -198,7 +195,7 @@ public class App {
                 catch (IOException ex) { 
                 }
 
-                System.out.println("Carreta-tanque cadastrada com sucesso! Pressione Enter para continuar.");
+                System.out.println("Carreta-tanque cadastrada com sucesso!");
                 break;
             default:
                 throw new AssertionError("Opção inválida");
@@ -235,7 +232,7 @@ public class App {
                 
                     cargas_perigosas.add(carga_perigosa);
                     oos.writeObject(cargas_perigosas);
-                    System.out.println("Carga perigosa cadastrada com sucesso! Pressione Enter para continuar.");
+                    System.out.println("Carga perigosa cadastrada com sucesso!");
                 } 
                 catch (IOException ex) { 
                     ex.printStackTrace(); 
@@ -249,7 +246,7 @@ public class App {
                 
                     cargas_regulares.add(carga_regular);
                     oos.writeObject(cargas_regulares);
-                    System.out.println("Carga regular cadastrada com sucesso! Pressione Enter para continuar.");
+                    System.out.println("Carga regular cadastrada com sucesso!");
                 } 
                 catch (IOException ex) { 
                     ex.printStackTrace(); 
@@ -280,10 +277,17 @@ public class App {
             motoristas.add(motorista);
             oos.writeObject(motoristas);
             oos.flush(); 
-            System.out.println("Motorista cadastrado com sucesso! Pressione Enter para continuar.");
+            System.out.println("Motorista cadastrado com sucesso!");
         } 
         catch (IOException ex) { 
             ex.printStackTrace(); 
+        }
+    }
+
+    public static void listar_viagens(){
+        System.out.println("Lista de viagens cadastradas: ");
+        for (Viagem viagem : viagens) {
+            System.out.println(viagem);
         }
     }
 
@@ -429,8 +433,7 @@ public class App {
 
 
         while(opt != 0){
-            //cls();
-            System.out.println("CWD:" +System.getProperty("user.dir"));
+            cls();
             System.out.println("Olá usuário! Escolha uma opção:");
             System.out.println("""
                     [1] Criar viagem
@@ -443,7 +446,7 @@ public class App {
                     [8] Listar cargas
                     [0] Sair
                     """);
-            opt = input.nextInt();
+            opt = input.nextInt();input.nextLine();
             
             cls();
             switch (opt) {
@@ -477,10 +480,7 @@ public class App {
                     break;
                 case 5:
                     try {
-                        System.out.println("Lista de viagens cadastradas: ");
-                        for (Viagem viagem : viagens) {
-                            System.out.println(viagem);
-                        }
+                        listar_viagens();
                     } 
                     catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -514,6 +514,8 @@ public class App {
                 default:
                     throw new AssertionError();
             }
+            System.out.println("Pressione Enter para continuar...");
+            input.nextLine();
         }
     }
 }
